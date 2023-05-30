@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<link rel="stylesheet" href="" class="css">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,500;0,700;1,200&display=swap');
+
+
+.welcome{
+   display: inline-block;
+    color:darkslategrey;
+    /* border: 3px solid royalblue; */
+    position: absolute;
+    left: 222px;
+    top: 10px;
+    font-size: 100px;
+     
+}
+body{
+   color: darkslategrey;
+    background: url(https://img.freepik.com/free-photo/technology-human-touch-background-modern-remake-creation-adam_53876-129794.jpg?w=1596&t=st=1685300948~exp=1685301548~hmac=5619cb86fef1e1d2cb32c2cc238969af54a40986b4affba4756edbcf08e0ce72) ;
+    background-size: 2000 2500;
+    background-repeat: no-repeat;
+    margin: 0 px;
+   padding: 0 px;
+   font-family: 'Nunito Sans', sans-serif;
+   
+
+}
+
+.up1
+{  background-color: none;
+    color: rgb(220, 20, 20);
+    border: 3px solid teal;
+    padding: 5px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+    left:770px;
+    top: 330px;
+    position:absolute;
+    font-size: 23px;
+}
+
+.up2
+{  background-color: none;
+    font-size: 23px;
+    color: rgb(220, 20, 20);
+    border: 3px solid teal;
+    padding: 5px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+    left: 970px;
+    top: 400px;
+    position: absolute;
+}
+</style>
+
+
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+    <div class="welcome">Welcome to COEAMT</div>
+
+
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{fname}}!</h3>
+    <h4>You're successfully logged in.</h4>
+    <button type="submit"><a href="/signout">SignOut</a></button>
+    {% else %}
+    <button type="submit" class="up1"><a href="/signup">SignUp</a></button>
+    <br/>
+    <br/>
+    <button type="submit" class="up2"><a href="/signin">SignIn</a></button>
+    {% endif %}
+</body>
+</html>
